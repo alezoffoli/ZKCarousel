@@ -11,7 +11,7 @@ public struct ZKCarouselSlide {
     public var description: String?
     public var properties: ZKCarouselSlideProperties = ZKCarouselSlideProperties()
     
-    public init(image: UIImage?, title: String?, description: String?, imageContentMode: UIView.ContentMode = .scaleAspectFill) {
+    public init(image: UIImage?, title: String?, description: String?) {
         self.image = image
         self.title = title
         self.description = description
