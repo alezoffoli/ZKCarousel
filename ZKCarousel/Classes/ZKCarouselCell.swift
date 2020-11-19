@@ -20,12 +20,9 @@ public class ZKCarouselCell: UICollectionViewCell {
     
     private lazy var imageView : UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleAspectFit
         iv.backgroundColor = .clear
         iv.clipsToBounds = true
-        if slide?.properties.shouldAddGradient ?? true {
-            iv.addBlackGradientLayer(frame: bounds)
-        }
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
