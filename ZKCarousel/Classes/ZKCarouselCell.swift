@@ -85,7 +85,6 @@ public class ZKCarouselCell: UICollectionViewCell {
     
     private func parseData(forSlide slide: ZKCarouselSlide) {
         imageView.image = slide.image
-        imageView.contentMode = slide.properties.contentMode
         titleLabel.text = slide.title
         descriptionLabel.text = slide.description
     }
