@@ -44,7 +44,8 @@ final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICol
         control.currentPage = 0
         control.hidesForSinglePage = true
         control.pageIndicatorTintColor = .lightGray
-        control.currentPageIndicatorTintColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.0)
+        control.currentPageIndicatorTintColor = .white
+        control.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 37/255)
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
@@ -88,8 +89,11 @@ final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICol
         collectionView.addGestureRecognizer(tapGesture)
         
         addSubview(pageControl)
-        pageControl.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        pageControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
+        pageControl.layer.cornerRadius = 4
+        pageControl.clipsToBounds = true
+        pageControl.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.18)
+        
+        pageControl.centerXAnchor.constraint(equalTo: self.collectionView.centerXAnchor).isActive = true
         pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
         pageControl.heightAnchor.constraint(equalToConstant: 25).isActive = true
         bringSubviewToFront(pageControl)
@@ -116,7 +120,8 @@ final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICol
         DispatchQueue.main.async {
             self.collectionView.reloadData()
             self.pageControl.numberOfPages = self.slides.count
-            self.pageControl.size(forNumberOfPages: self.slides.count)
+            let size = self.pageControl.size(forNumberOfPages: self.slides.count)
+            self.pageControl.widthAnchor.constraint(equalToConstant: size.width).isActive = true
         }
     }
     

@@ -20,7 +20,7 @@ public class ZKCarouselCell: UICollectionViewCell {
     
     private lazy var imageView : UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.backgroundColor = .clear
         iv.clipsToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
