@@ -45,7 +45,6 @@ final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICol
         control.hidesForSinglePage = true
         control.pageIndicatorTintColor = .lightGray
         control.currentPageIndicatorTintColor = .white
-        control.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 37/255)
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
