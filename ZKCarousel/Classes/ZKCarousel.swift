@@ -119,8 +119,6 @@ final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICol
         DispatchQueue.main.async {
             self.collectionView.reloadData()
             self.pageControl.numberOfPages = self.slides.count
-            let size = self.pageControl.size(forNumberOfPages: self.slides.count)
-            self.pageControl.widthAnchor.constraint(equalToConstant: size.width).isActive = true
         }
     }
     
