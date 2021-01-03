@@ -148,6 +148,7 @@ final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICol
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "slideCell", for: indexPath) as! ZKCarouselCell
         cell.slide = slides[indexPath.item]
+        cell.updateArrows(isFirstItem: indexPath.item == 0, isLastItem: indexPath.item == (slides.count - 1))
         return cell
     }
     

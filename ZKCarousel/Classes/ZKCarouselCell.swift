@@ -48,6 +48,22 @@ public class ZKCarouselCell: UICollectionViewCell {
         return label
     }()
     
+    private var leftArrow : UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.clipsToBounds = true
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    
+    private var rightArrow : UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.clipsToBounds = true
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    
     // MARK: - Default Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -81,12 +97,31 @@ public class ZKCarouselCell: UICollectionViewCell {
         titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -8).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        
+        contentView.addSubview(leftArrow)
+        leftArrow.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        leftArrow.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0).isActive = true
+        leftArrow.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        leftArrow.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        contentView.addSubview(rightArrow)
+        rightArrow.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
+        rightArrow.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0).isActive = true
+        rightArrow.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        rightArrow.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
     private func parseData(forSlide slide: ZKCarouselSlide) {
         imageView.image = slide.image
+        leftArrow.image = UIImage(named: "Arrow Left")
+        rightArrow.image = UIImage(named: "Arrow Right")
         titleLabel.text = slide.title
         descriptionLabel.text = slide.description
+    }
+    
+    func updateArrows(isFirstItem: Bool, isLastItem: Bool) {
+        leftArrow.isHidden = isFirstItem
+        rightArrow.isHidden = isLastItem
     }
 
 }
