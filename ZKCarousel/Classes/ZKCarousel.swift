@@ -19,6 +19,8 @@ final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICol
     public var interval: Double = 1.0
     public var delegate: ZKCarouselDelegate?
     
+    private let kPageControlMinWidth: CGFloat = 105
+    
     public var slides: [ZKCarouselSlide] = [] {
         didSet {
             updateUI()
@@ -118,7 +120,11 @@ final public class ZKCarousel: UIView, UICollectionViewDelegateFlowLayout, UICol
     private func updateUI() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            self.pageControl.numberOfPages = self.slides.count
+            let numberOfPages = self.slides.count
+            let pageControlWidth = max(self.pageControl.size(forNumberOfPages: numberOfPages).width, self.kPageControlMinWidth)
+            self.pageControl.numberOfPages = numberOfPages
+            self.pageControl.widthAnchor.constraint(equalToConstant: pageControlWidth).isActive = true
+            self.layoutIfNeeded()
         }
     }
     
